@@ -15,7 +15,6 @@ class InitialScreen extends StatefulWidget {
 class _InitialScreenState extends State<InitialScreen> {
   @override
   Widget build(BuildContext context) {
-
     final store = Provider.of<MedicineStore>(context);
 
     final items = store.items;
@@ -31,25 +30,29 @@ class _InitialScreenState extends State<InitialScreen> {
             if (store.isLoading) {
               return const Center(
                   child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   CircularProgressIndicator(),
                   Text(
                     'Carregando',
-                    style: TextStyle(fontSize: 32),
+                    style: TextStyle(fontSize: 16),
                   )
                 ],
               ));
             } else if (items.isEmpty) {
               return const Center(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Icon(
                       Icons.error_outline,
-                      size: 128,
+                      size: 98,
                     ),
                     Text(
-                      'Não há nenhuma tarefa',
-                      style: TextStyle(fontSize: 32),
+                      'Você não possui nenhum medicamento',
+                      style: TextStyle(fontSize: 16),
                     )
                   ],
                 ),
@@ -77,7 +80,8 @@ class _InitialScreenState extends State<InitialScreen> {
 
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                        content: Text('Medicamento removido com sucesso!'),
+                                        content: Text(
+                                            'Medicamento removido com sucesso!'),
                                       ),
                                     );
 
